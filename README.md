@@ -5,52 +5,43 @@ The Hospital Management System is a C++ application designed to automate hospita
 
 ## Table of Contents
 - [Project Description](#project-description)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Installation/Usage](#installationusage)
 - [Features](#features)
 - [Data Structures and Algorithms Used](#data-structures-and-algorithms-used)
 - [Contributing](#contributing)
-- [Contact](#contact)
 
-## Installation
+## Installation/Usage
+
 Follow these steps to set up the project:
 
-1. Clone the repository:
+1. **Check if `gcc` is Installed**
+
+   To verify if `gcc` is installed on your system, open the terminal and run:
+    ```bash
+    gcc --version
+    ```
+   If `gcc` is installed, this command will display the version information. If not, you will need to install `gcc` ([GCC Releases page](https://gcc.gnu.org/releases.html)).
+
+2. **Clone the Repository**
+
+   Clone the repository with the following command:
     ```bash
     git clone https://github.com/username/hospital-management-system.git
     cd hospital-management-system
     ```
 
-2. Install necessary dependencies (if any):
+3. **Compile the C++ Code Using `gcc`**
+
+   Compile the C++ code with:
     ```bash
-    # Example command
-    sudo apt-get install <dependency-name>
+    gcc -o HospitalManagementSystem main.cpp
     ```
 
-3. Compile the C++ code:
-    ```bash
-    g++ main.cpp -o HospitalManagementSystem
-    ```
+4. **Run the Executable**
 
-4. Run the executable:
+   Run the compiled executable:
     ```bash
     ./HospitalManagementSystem
-    ```
-
-*(Edit this section according to your project’s specific setup.)*
-
-## Usage
-To run the program in the Windows terminal:
-
-1. Open the terminal and navigate to the project directory.
-2. Compile the C++ code:
-    ```bash
-    g++ main.cpp -o HospitalManagementSystem.exe
-    ```
-
-3. Run the compiled program:
-    ```bash
-    HospitalManagementSystem.exe
     ```
 
 ## Features
@@ -70,8 +61,6 @@ The project employs various Data Structures and Algorithms (DSA) to manage data 
 - **Update**: Updates records as patient information or statuses change.
 - **Display**: Displays patient records, bed allocations, and more using [mention DSA techniques].
 
-*(You can expand on this section to specify which data structures, like linked lists, trees, or hash tables, were used and how.)*
-
 ## Contributing
 Contributions are welcome! Please follow these steps:
 
@@ -82,13 +71,7 @@ Contributions are welcome! Please follow these steps:
 5. Push to your branch.
 6. Open a pull request.
 
+<!--
 ## Contact
 Your Name - [@YourTwitterHandle](https://twitter.com/yourusername) - your.email@example.com
-
-## Data Structure Table
-
-| Index | Description                                                                 |
-|-------|-----------------------------------------------------------------------------|
-| 1     | **Patient Record Insertion:** Handles adding new patient data to the system.|
-| 2     | **Update Functionality:** Modifies existing patient or bed data as needed.  |
-| 3     | **Display Functionality:** Displays all patient records and current statuses.|
+-->
