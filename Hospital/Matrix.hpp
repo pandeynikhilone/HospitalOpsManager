@@ -35,7 +35,7 @@ float calculateTotalAmount(std::vector<Medicine>& medicines, std::vector<int>& s
     return sum;
 }
 
-void performMedicineSelection() {
+float performMedicineSelection() {
     // Seed the random number generator
     srand(static_cast<unsigned int>(time(0)));
 
@@ -89,7 +89,8 @@ void performMedicineSelection() {
     for (int index : selectedIndices) {
         std::cout << "- " << medicines[index].name << " (Rs: " << medicines[index].price << "/-)\n";
     }
-    std::cout << "Total Amount: Rs: " << totalAmount << "/-\n";
+
+    return totalAmount;
 }
 
 #endif

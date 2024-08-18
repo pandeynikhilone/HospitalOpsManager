@@ -4,20 +4,11 @@
 #include "BST.hpp"
 #include "Hash.hpp"
 #include "Matrix.hpp"
-#include"console.hpp"
+#include "console.hpp"
 
 class CabinManager {
 public:
-    // Default constructor
-    CabinManager() {
-        // Manually insert data into the binary search tree
-        patientCabin.insert(new TreeNode("CAB001", true));
-        patientCabin.insert(new TreeNode("CAB002", true));
-        patientCabin.insert(new TreeNode("CAB003", true));
-        patientCabin.insert(new TreeNode("CAB004", true));
-        patientCabin.insert(new TreeNode("CAB005", true));
-        // Add more dummy data as needed
-    }
+    CabinManager() : patientCabin() {} // Cabins are automatically inserted in the BST constructor
 
     BinarySearchTree& getCabinTree() {
         return patientCabin;
@@ -31,42 +22,42 @@ int main() {
     CabinManager cabinManager;
 
     // 1. Patient Details
-    LinkNode patient1(1, "John Doe", "Fever", 30, 'm', 'O+');
+    LinkNode randomPatient = getRandomPatient();
 
-    // 2. Patient Details - search and allotment
-    BinarySearchTree& patientCabin = cabinManager.getCabinTree();
+    // 2. Cabin Allocation
+    BinarySearchTree& cabinTree = cabinManager.getCabinTree();
+    TreeNode* randomCabin = cabinTree.getRandomCabin();
 
-    // Searching for a cabin
-    std::string cabinCode = "CAB001";
-    TreeNode* cabin = patientCabin.search(cabinCode);
-    if (cabin != nullptr) {
-        std::cout << "Patient is allotted to cabin: " << cabin->cabin_code << std::endl;
+    if (randomCabin != nullptr) {
+        std::cout << "Patient is allotted to cabin: " << randomCabin->cabin_code << std::endl;
     } else {
-        std::cout << "Cabin not found." << std::endl;
+        std::cout << "No cabins available." << std::endl;
     }
 
-    // 3. Doctors Prescription
+    // 3. Doctor's Prescription
     DoctorDatabase doctors;
-    doctors.addDoctor("Dr. Smith", "Cardiology");
-    doctors.addDoctor("Dr. Johnson", "Neurology");
+    auto randomDoctor = doctors.getRandomDoctor();
 
     // 4. Medicine
-    performMedicineSelection();
+    float medicineCharges = performMedicineSelection();
 
     // 5. Receipt
-    // Get current date and time
     std::time_t currentTime = std::time(nullptr);
     std::tm* localTime = std::localtime(&currentTime);
 
     // Display receipt
     std::cout << "\nReceipt:\n";
-    std::cout << "Patient Name: " << patient1.p_Name << std::endl;
-    std::cout << "Patient Age: " << patient1.age << std::endl;
-    std::cout << "Date: " << (localTime->tm_year + 1900) << '-' << (localTime->tm_mon + 1) << '-' << localTime->tm_mday << std::endl;
-    std::cout << "Time: " << localTime->tm_hour << ":" << localTime->tm_min << std::endl;
+    std::cout << "Patient ID: " << randomPatient.p_ID << std::endl;
+    std::cout << "Patient Name: " << randomPatient.p_Name << std::endl;
+    std::cout << "Description: " << randomPatient.description << std::endl;
+    std::cout << "Age: " << randomPatient.age << std::endl;
+    std::cout << "Sex: " << randomPatient.sex << std::endl;
+    std::cout << "Blood Group: " << randomPatient.blood_group << std::endl;
+    std::cout << "Assigned Doctor: " << randomDoctor.first << std::endl;
+    std::cout << "Doctor's Degree: " << randomDoctor.second << std::endl;
+    std::cout << "Assigned Cabin: " << randomCabin->cabin_code << std::endl;
 
     // Assuming arbitrary charges
-    float medicineCharges = 100.0; 
     float bedCharges = 200.0; 
     float hospitalCharges = 300.0; 
     float otherCharges = 50.0;
